@@ -1,0 +1,171 @@
+    <!DOCTYPE html>
+    <head>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='css/index.css') }}">
+    </head>
+    <body>
+        <div class = "container">
+        <header>
+        <h1 id = "title">GUI Based Transcript Generator</h1>
+        </header>
+        <p id = "description">Project 2 CS384</p>
+        <div id = "project-gui">
+            <br>
+            <form id = "names-form" action = "/" method = "POST" enctype="multipart/form-data">
+                <input id='names-roll' type='file' name = "csv-file" required hidden/>
+                <button type= "button" class = "upload" id ='btn-1'>Browse for names-roll.csv</button>
+                <div class = "span-label">
+                <span id="s1">{%if value1==1%}names-roll.csv{%else%}{%endif%}</span>
+                </div>
+                <script type="text/javascript">
+                    const FileBtn = document.getElementById("names-roll");
+                    const masterBtn = document.getElementById("btn-1");
+                    const txtBtn = document.getElementById("s1");
+
+                    masterBtn.addEventListener("click", function(){
+                        FileBtn.click();
+                    });
+                    FileBtn.addEventListener("change",function(){
+                        if(FileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]=="names-roll.csv"){
+                            txtBtn.innerHTML = "names-roll.csv";
+                            document.getElementById("names-form").submit();
+                        } else{
+                            txtBtn.innerHTML = "You must choose names-roll.csv file";
+                        }
+                    });
+                </script>
+            </form>
+            <br>
+            <form id = "subjects-form" action = "/" method = "POST" enctype="multipart/form-data">
+                <input id='subjects-master' type='file' name = "csv-file" required hidden/>
+                <button type= "button" class = "upload" id ='btn-2'>Browse for subjects_master.csv</button>
+                <div class = "span-label">
+                <span id="s2">{%if value2==1%}subjects_master.csv{%else%}{%endif%}</span>
+                </div>
+                <script type="text/javascript">
+                    const FileBtn2 = document.getElementById("subjects-master");
+                    const masterBtn2 = document.getElementById("btn-2");
+                    const txtBtn2 = document.getElementById("s2");
+
+                    masterBtn2.addEventListener("click", function(){
+                        FileBtn2.click();
+                    });
+                    FileBtn2.addEventListener("change",function(){
+                        if(FileBtn2.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]=="subjects_master.csv"){
+                            txtBtn2.innerHTML = "subjects_master.csv";
+                            document.getElementById("subjects-form").submit();
+                        } else{
+                            txtBtn2.innerHTML = "You must choose subjects_master.csv file";
+                        }
+                    });
+                </script>
+            </form>
+            <br>
+            <form id = "grades-form" action = "/" method = "POST" enctype="multipart/form-data">
+                <input id='grades' type='file' name = "csv-file" required hidden/>
+                <button type= "button" class = "upload" id ='btn-3'>Browse for grades.csv</button>
+                <div class = "span-label">
+                <span id="s3">{%if value3==1%}grades.csv{%else%}{%endif%}</span>
+                </div>
+                <script type="text/javascript">
+                    const FileBtn3 = document.getElementById("grades");
+                    const masterBtn3 = document.getElementById("btn-3");
+                    const txtBtn3 = document.getElementById("s3");
+
+                    masterBtn3.addEventListener("click", function(){
+                        FileBtn3.click();
+                    });
+                    FileBtn3.addEventListener("change",function(){
+                        if(FileBtn3.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1]=="grades.csv"){
+                            txtBtn3.innerHTML = "grades.csv";
+                            document.getElementById("grades-form").submit();
+                        } else{
+                            txtBtn3.innerHTML = "You must choose grades.csv file";
+                        }
+                    });
+                </script>
+            </form>
+            <br>
+            <div class="image-button">
+                <form id = "Seal-form" action = "/" method = "POST" enctype="multipart/form-data">
+                    <input id='Seal-input' type='file' name = "Seal-image" required hidden/>
+                    <button type= "button" class = "upload_image" id ='btn-4'>Upload Seal</button>
+                    <div class = "span-label">
+                    <span id="s4">{%if value4==1%}Seal Uploaded{%else%}{%endif%}</span>
+                    </div>
+                    <script type="text/javascript">
+                        const FileBtn4 = document.getElementById("Seal-input");
+                        const masterBtn4 = document.getElementById("btn-4");
+                        const txtBtn4 = document.getElementById("s4");
+
+                        masterBtn4.addEventListener("click", function(){
+                            FileBtn4.click();
+                        });
+                    FileBtn4.addEventListener("change",function(){
+                            if((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(FileBtn4.value)){
+                                txtBtn4.innerHTML = "Seal Uploaded";
+                                document.getElementById("Seal-form").submit();
+                            } 
+                            else{
+                                txtBtn4.innerHTML = "You must choose a image";
+                            }
+                        });
+                    </script>
+                </form>
+                <form id = "Sign-form" action = "/" method = "POST" enctype="multipart/form-data">
+                    <input id='Sign-input' type='file' name = "Sign-image" required hidden/>
+                    <button type= "button" class = "upload_image" id ='btn-5'>Upload Signature</button>
+                    <div class = "span-label">
+                    <span id="s5">{%if value5==1%}Sign Uploaded{%else%}{%endif%}</span>
+                    </div>
+                    <script type="text/javascript">
+                        const FileBtn5 = document.getElementById("Sign-input");
+                        const masterBtn5 = document.getElementById("btn-5");
+                        const txtBtn5 = document.getElementById("s5");
+
+                        masterBtn5.addEventListener("click", function(){
+                            FileBtn5.click();
+                        });
+                        FileBtn5.addEventListener("change",function(){
+                            if((/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i).test(FileBtn5.value)){
+                                txtBtn5.innerHTML = "Sign Uploaded";
+                                document.getElementById("Sign-form").submit();
+                            } else{
+                                txtBtn5.innerHTML = "You must choose a image"; 
+                            }
+                        });
+                    </script>
+                </form>
+            </div>
+            
+            <form id = "marks-form" action = "/" method = "POST">
+                <p class="range">Range of roll numbers</p>
+                <div class = "marks">
+                    <input id = "starts" type = "text" name = "starts" placeholder = "Roll number starts" class = "form-control" required>
+                    <p>to</p>
+                    <input id = "ends" type = "text" name = "ends" placeholder = "Roll number ends" class = "form-control" required>
+                </div>
+                <br>
+                
+                <div class = "spans">
+                    <span></span>
+                    <br>
+                    <span>{%if value6==0%}No files chosen, yet{%else%}{{value6}}{%endif%}</span>
+                    <br>
+                </div>
+                
+                <div class = "spanb">
+                    <span id = "id4">{%if value8==1%}{%if value9!=3%}Please upload all csv files{%elif value10==-1%}Please enter valid input/files{%else%}Transcripts for given range Generated !![{{value14}}, {{value15}}]{%endif%}{%if value13 == []%}{%else%}<br>{{value13}} not present.{%endif%}{%endif%}</span>
+                </div>
+                <button class = "upload" type = "submit" id = "id3" name = "submit" value="submit-1">Generate Transcripts for above range</button>
+            <br>
+            </form>
+            <div class = "spanb">
+                <span>{%if value11==1%}{%if value9!=3%}Please upload all csv files{%elif value12==-1%}Please upload valid files{%else%}Transcripts Generated !!{%endif%}{%endif%}</span>   
+            </div>
+            <form id = "marks-form" action = "/" method = "POST">
+                <button class = "upload" type = "submit" name = "submit" value = "submit-2">Generate all Transcripts</button>
+            </form>
+        </div>
+    </div>
+    </body>
+    </html>
